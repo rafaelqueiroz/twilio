@@ -61,7 +61,14 @@ class TwilioComponent extends Component {
 	 * @return mixed
 	 */
 	public function sendMessage($from, $to, $body = null) {
-		return $this->client->account->sms_messages->create($from, $to, $body);
+		
+		$data = array(
+			'From' => $from, 
+			'To' => $to, 
+			'Body' => $body
+		);
+
+		return $this->client->account->messages->create($data);
 	}
 
 }
